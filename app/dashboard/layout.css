@@ -1,0 +1,16 @@
+.__dashboard{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (max-width: 768px) {
+    .show-mobile {
+      display: block;
+    }
+    .hide-mobile {
+      display: none;
+    }
+  }
+  
