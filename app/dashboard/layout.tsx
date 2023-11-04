@@ -4,14 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import img from '../../public/img/img.jpg';
 import { IoReorderThreeOutline } from 'react-icons/io5';
+import { useRouter } from 'next/navigation';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
+
 }
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -33,7 +36,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = (props) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
+  function logout() {
+    router.push('/')
+  }
   return (
     <div className="sm:mx-4 md:mx-8 lg:mx-0">
     {isMobile ? (
@@ -63,16 +68,17 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = (props) => {
           />
         </h2>
         <ul className="flex items-center gap-8 cursor-pointer">
-          <li>Home</li>
+          {/* <li>Home</li>
           <li>About US</li>
           <li>Culture</li>
-          <li>Contact Us</li>
+          <li>Contact Us</li> */}
+          <button onClick={logout}>Logout</button>
         </ul>
       </nav>
     )}
     {(!isMobile || (isMobile && showMenu)) && (
       <div className="flex">
-        <div className="h-auto sm:h-screen bg-green-300 w-full sm:w-3/12 text-white text-2xl">
+        <div className="h-auto sm:h-screen bg-green-300 w-full sm:w-2/12 text-white text-2xl">
           <ul className="pt-5 flex flex-col gap-5 px-3">
             <li><Link href="/dashboard">Dashboard</Link></li>
             <li><Link href="/dashboard/service">Service</Link></li>
@@ -80,12 +86,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = (props) => {
             <li><Link href="/dashboard/profile">Profile</Link></li>
           </ul>
         </div>
-        <div className="p-4 sm:w-3/4 max-h-screen overflow-auto">
+        <div className="p-4 sm:w-10/12 max-h-screen overflow-auto ">
           {props.children}
         </div>
       </div>
     )}
-   
+     
   </div>
   
   );
