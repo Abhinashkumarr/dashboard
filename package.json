@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kinde-oss/kinde-auth-nextjs": "^2.0.0",
+    "@kinde-oss/kinde-auth-nextjs": "v2.0.9",
     "next": "14.0.1",
     "next-navigation": "^1.0.6",
     "react": "^18",
